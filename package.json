@@ -1,7 +1,7 @@
 {
   "name": "react-konva-network-graph",
   "version": "0.1.0",
-  "private": true,
+  "main": "lib/index.js",
   "dependencies": {
     "@svgr/webpack": "4.1.0",
     "@typescript-eslint/eslint-plugin": "1.6.0",
