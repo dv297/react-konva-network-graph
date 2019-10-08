@@ -31,7 +31,7 @@ function NetworkGraph(props) {
   const [scale, setScale] = useState(1);
   const [position, setPosition] = useState({ x: 0, y: 0 });
 
-  const { onEdgesUpdate } = props;
+  const { onEdgesUpdate, onEdgeAdded, onEdgeDeleted } = props;
   useEffect(() => {
     if (!machineService) {
       return;
@@ -54,6 +54,8 @@ function NetworkGraph(props) {
           };
           const updatedEdges = [...prevEdges, newEdge];
           onEdgesUpdate(updatedEdges);
+          onEdgeAdded(newEdge);
+
           sendCommand('NOTIFY_EDGE_CREATED');
           return updatedEdges;
         });
@@ -68,8 +70,10 @@ function NetworkGraph(props) {
             return prevEdges;
           }
 
+          const edgeToRemove = prevEdges.find((_, idx) => idx === indexOfEdgeToRemove);
           const updatedEdges = prevEdges.filter((_, idx) => idx !== indexOfEdgeToRemove);
           onEdgesUpdate(updatedEdges);
+          onEdgeDeleted(edgeToRemove);
           sendCommand('NOTIFY_EDGE_DELETED');
           return updatedEdges;
         });
@@ -179,11 +183,15 @@ NetworkGraph.propTypes = {
 
   onNodeDragEnd: PropTypes.func,
   onEdgesUpdate: PropTypes.func,
+  onEdgeAdded: PropTypes.func,
+  onEdgeDeleted: PropTypes.func,
 };
 
 NetworkGraph.defaultProps = {
   onNodeDragEnd: () => {},
   onEdgesUpdate: () => {},
+  onEdgeAdded: () => {},
+  onEdgeDeleted: () => {},
 };
 
 export default NetworkGraph;

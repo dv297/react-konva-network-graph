@@ -96,8 +96,6 @@ const stateMachine = Machine(
 
 const GraphCoordinator = (props) => {
   const [machineState, sendCommand, machineService] = useMachine(stateMachine);
-  console.log(machineState.value);
-  console.log(machineState.context);
 
   const contextValue = {
     machineState,

@@ -44,11 +44,9 @@
     "postcss-preset-env": "6.6.0",
     "postcss-safe-parser": "4.0.1",
     "prop-types": "^15.7.2",
-    "react": "^16.8.6",
     "react-app-polyfill": "^1.0.1",
     "react-dev-utils": "^9.0.1",
-    "react-dom": "^16.8.6",
-    "react-konva": "^16.8.7-2",
+    "react-konva": "^16.8.7-3",
     "react-test-renderer": "^16.8.6",
     "resolve": "1.10.0",
     "sass-loader": "7.1.0",
@@ -87,6 +85,10 @@
       "last 1 safari version"
     ]
   },
+  "peerDependencies": {
+    "react": "^16.8.6",
+    "react-dom": "^16.8.6"
+  },
   "devDependencies": {
     "@babel/cli": "^7.4.4",
     "@babel/core": "^7.4.3",
@@ -99,7 +101,9 @@
     "enzyme-adapter-react-16": "^1.14.0",
     "enzyme-to-json": "^3.3.5",
     "jest-canvas-mock": "^2.1.0",
-    "prettier": "^1.18.2"
+    "prettier": "^1.18.2",
+    "react": "^16.8.6",
+    "react-dom": "^16.8.6"
   },
   "jest": {
     "collectCoverageFrom": [
