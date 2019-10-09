@@ -1,6 +1,6 @@
 {
   "name": "react-konva-network-graph",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "main": "lib/index.js",
   "dependencies": {
     "@xstate/react": "^0.6.1",
@@ -154,7 +154,12 @@
   },
   "babel": {
     "presets": [
-      ["react-app", { "absoluteRuntime":  false}]
+      [
+        "react-app",
+        {
+          "absoluteRuntime": false
+        }
+      ]
     ]
   }
 }
