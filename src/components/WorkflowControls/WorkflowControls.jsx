@@ -12,6 +12,4 @@ const WorkflowControls = () => {
   );
 };
 
-WorkflowControls.propTypes = {};
-
 export default WorkflowControls;

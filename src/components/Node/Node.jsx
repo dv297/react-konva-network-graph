@@ -35,9 +35,34 @@ const Node = (props) => {
 };
 
 Node.propTypes = {
+  /**
+   * Function defining how to render each individual node. This function is expected to return a React element created
+   * using react-konva. Data for the node, as well as meta-data for graphing the node, such as positioning, is provided
+   * as a parameter to this function.
+   */
   renderNode: PropTypes.func.isRequired,
+
+  /**
+   * Object containing data related to the node. This includes the node data as well as positioning data.
+   */
   data: PropTypes.object.isRequired,
+
+  /**
+   * Callback function called when the user is actively dragging a node. When called, the function is passed an object
+   * with the following properties:
+   * - id: The id of the node
+   * - x: The position of the node on the x axis
+   * - y: The position of the node on the y axis
+   */
   onDragMove: PropTypes.func,
+
+  /**
+   * Callback function called when the user is done dragging a node. When called, the function is passed an object with
+   * the following properties:
+   * - id: The id of the node
+   * - x: The position of the node on the x axis
+   * - y: The position of the node on the y axis
+   */
   onDragEnd: PropTypes.func,
 };
 

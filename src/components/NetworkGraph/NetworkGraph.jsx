@@ -173,17 +173,76 @@ function NetworkGraph(props) {
 }
 
 NetworkGraph.propTypes = {
+  /**
+   * The width of the canvas.
+   */
   width: PropTypes.number.isRequired,
+
+  /**
+   * The height of the canvas.
+   */
   height: PropTypes.number.isRequired,
+
+  /**
+   * Function defining how to render each individual node. This function is expected to return a React element created
+   * using react-konva. Data for the node, as well as meta-data for graphing the node, such as positioning, is provided
+   * as a parameter to this function.
+   */
   renderNode: PropTypes.func.isRequired,
+
+  /**
+   * An array of objects matching the shape of {@link NodeShape} representing the individual nodes to render.
+   */
   nodes: PropTypes.arrayOf(NodeShape).isRequired,
+
+  /**
+   * An array of objects matching the shape of {@link EdgeShape} representing the edges that connect nodes to render.
+   */
   edges: PropTypes.arrayOf(EdgeShape).isRequired,
+
+  /**
+   * The width of each node. Used to calculate where to place the connection for the edge.
+   */
   nodeWidth: PropTypes.number.isRequired,
+
+  /**
+   * The height of each node. Used to calculate where to place the connection for the edge.
+   */
   nodeHeight: PropTypes.number.isRequired,
 
+  /**
+   * Callback function called when the user is done dragging a node. When called, the function is passed an object with
+   * the following properties:
+   * - id: The id of the node
+   * - x: The position of the node on the x axis
+   * - y: The position of the node on the y axis
+   */
   onNodeDragEnd: PropTypes.func,
+
+  /**
+   * Callback function called when the user has added or deleted an edge. When called, the function is passed the
+   * updated list of all the edges.
+   */
   onEdgesUpdate: PropTypes.func,
+
+  /**
+   * Callback function called when the user has added an edge. When called, the function is passed an object with the
+   * following properties:
+   * - edgeGraphData: An object containing the following properties:
+   *   - id: A unique identifier for the edge
+   *   - from: The identifier of the node that is the starting point of the edge
+   *   - to: The identifier of the node that is the ending point of the edge
+   */
   onEdgeAdded: PropTypes.func,
+
+  /**
+   * Callback function called when the user has delete an edge. When called, the function is passed an object with the
+   * following properties:
+   * - edgeGraphData: An object containing the following properties:
+   *   - id: A unique identifier for the edge
+   *   - from: The identifier of the node that is the starting point of the edge
+   *   - to: The identifier of the node that is the ending point of the edge
+   */
   onEdgeDeleted: PropTypes.func,
 };
 
