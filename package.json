@@ -2,6 +2,7 @@
   "name": "react-konva-network-graph",
   "version": "0.0.3",
   "main": "lib/index.js",
+  "license": "MIT",
   "dependencies": {
     "@xstate/react": "^0.6.1",
     "konva": "^3.3.3",
