@@ -34,7 +34,7 @@ const Node = (props) => {
   );
 };
 
-Node.propTypes = {
+const propTypes = {
   /**
    * Function defining how to render each individual node. This function is expected to return a React element created
    * using react-konva. Data for the node, as well as meta-data for graphing the node, such as positioning, is provided
@@ -66,9 +66,12 @@ Node.propTypes = {
   onDragEnd: PropTypes.func,
 };
 
+Node.propTypes = propTypes;
+
 Node.defaultProps = {
   onDragMove: () => {},
   onDragEnd: () => {},
 };
 
 export default Node;
+export { propTypes };

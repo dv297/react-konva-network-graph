@@ -1,4 +1,5 @@
 import React, { useContext } from 'react';
+import PropTypes from 'prop-types';
 
 import { GraphCoordinatorContext } from '../GraphCoordinator/GraphCoordinator';
 
@@ -30,6 +31,16 @@ const CustomWorkflowControlsWrapper = (props) => {
   return <div>{props.children({ mode, setToAddEdgeMode, setToDeleteEdgeMode, escapeCurrentMode })}</div>;
 };
 
-CustomWorkflowControlsWrapper.propTypes = {};
+CustomWorkflowControlsWrapper.propTypes = {
+  /**
+   * Function that defines a custom UI for controlling the state of the NetworkGraph. This function is passed an object
+   * with the following properties:
+   * - mode: The current mode that the network graph is in
+   * - setToAddEdgeMode: Function for changing the mode to allow for adding edges
+   * - setToDeleteEdgeMode: Function for changing the mode to allow for deleting edges
+   * - escapeCurrentMode: Function for resetting to the default "view" mode
+   */
+  children: PropTypes.func.isRequired,
+};
 
 export default CustomWorkflowControlsWrapper;
