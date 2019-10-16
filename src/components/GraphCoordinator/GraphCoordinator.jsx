@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { Machine, assign } from 'xstate';
 import { useMachine } from '@xstate/react';
 
@@ -106,7 +107,12 @@ const GraphCoordinator = (props) => {
   return <GraphCoordinatorContext.Provider value={contextValue}>{props.children}</GraphCoordinatorContext.Provider>;
 };
 
-GraphCoordinator.propTypes = {};
+GraphCoordinator.propTypes = {
+  /**
+   * Components to render inside of the GraphCoordinator.
+   */
+  children: PropTypes.node.isRequired,
+};
 
 export default GraphCoordinator;
 export { GraphCoordinatorContext };

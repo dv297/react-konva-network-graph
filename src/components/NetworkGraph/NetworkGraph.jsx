@@ -4,8 +4,6 @@ import { Layer, Stage } from 'react-konva';
 import uuid from 'uuid/v4';
 
 import Node from '../Node/Node';
-import NodeShape from '../../proptypes/NodeShape';
-import EdgeShape from '../../proptypes/EdgeShape';
 import Edge from '../Edge/Edge';
 import { GraphCoordinatorContext } from '../GraphCoordinator/GraphCoordinator';
 import WorkflowInstructions from '../WorkflowInstructions/WorkflowInstructions';
@@ -191,14 +189,50 @@ NetworkGraph.propTypes = {
   renderNode: PropTypes.func.isRequired,
 
   /**
-   * An array of objects matching the shape of {@link NodeShape} representing the individual nodes to render.
+   * An array of objects representing the individual nodes to render.
    */
-  nodes: PropTypes.arrayOf(NodeShape).isRequired,
+  nodes: PropTypes.arrayOf(
+    PropTypes.shape({
+      nodeGraphData: PropTypes.shape({
+        /**
+         * Unique identifier for the node
+         */
+        id: PropTypes.oneOfType([PropTypes.number, PropTypes.string]).isRequired,
+
+        /**
+         * The position of the node on the x-axis
+         */
+        x: PropTypes.number,
+
+        /**
+         * The position of the node on the y-axis
+         */
+        y: PropTypes.number,
+      }),
+    }),
+  ).isRequired,
 
   /**
-   * An array of objects matching the shape of {@link EdgeShape} representing the edges that connect nodes to render.
+   * An array of objects representing the edges that connect nodes to render.
    */
-  edges: PropTypes.arrayOf(EdgeShape).isRequired,
+  edges: PropTypes.arrayOf(
+    PropTypes.shape({
+      /**
+       * A unique identifier for the edge
+       */
+      id: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+
+      /**
+       * Identifier for the node that defines the starting point of the edge
+       */
+      from: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+
+      /**
+       * Identifier for the node that defines the ending point of the edge
+       */
+      to: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+    }),
+  ).isRequired,
 
   /**
    * The width of each node. Used to calculate where to place the connection for the edge.
